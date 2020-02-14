@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace _01_KCafeConsoleApp_Tests
-{
+{//
     [TestClass]
     public class UnitTest1
     {
