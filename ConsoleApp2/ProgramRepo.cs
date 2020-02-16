@@ -8,31 +8,41 @@ using System.Threading.Tasks;
 
 namespace _01_KCafeConsoleApp
 {//
-    class ProgramRepo
+    public class ProgramRepo
     {
-        List<Cafe> _attributeOne = new List<Cafe>();
-        List<CafeT> _attributeTwo = new List<CafeT>();
+        List<KCafeMenu> _kMenu = new List<KCafeMenu>();//<of> KCafeMenu
 
-        public void BuildMenuID()
+        public void BuildMenu()
         {
-            _MenuID.Add(new KCafeClasses(1, "name", "description", "list", 5));
+            _kMenu.Add(new KCafeMenu(1, "mealName1", "menuDescription1", "listIngredients1", 2.99));
+            _kMenu.Add(new KCafeMenu(2, "mealName2", "menuDescription2", "listIngredients2", 2.99));
+            _kMenu.Add(new KCafeMenu(3, "mealName3", "menuDescription3", "listIngredients3", 2.99));
+            _kMenu.Add(new KCafeMenu(4, "mealName4", "menuDescription4", "listIngredients4", 2.99));
+            _kMenu.Add(new KCafeMenu(5, "mealName5", "menuDescription5", "listIngredients5", 2.99));
         }
-        //public void BuildAttributeTwo()
-        //{
-        //    _attributeTwo.Add(new CafeT(1, ""));
-        //    _attributeTwo.Add(new CafeT(1, ""));
-        //}
-        public List<Cafe> ReturnCafe()
-        {
-            return _attributeOne;
-        }
-        //public List<CafeT> ReturnCafeT()
-        //{
-        //    return _attributeTwo;
-        //}
-        public AttributeTwo GetAttributeTwo()
-        {
 
+        public List<KCafeMenu> ReturnBuildMenu()
+        {
+            return _kMenu;
         }
+
+        //public string BuildMenuOptionsExitCondition(string Exit, string View_Menu)
+        //{
+        //    string choiceExit = "Exit the menu";
+            
+        //}
+
+        public bool CheckAddItemToMenu(KCafeMenu meal)//object kcafe menu called meal, adding it to list through buildmenuid, meal is type kcafemenu
+        //void to bool -> need return; -> asserting in unit testing
+        {
+            int kMenuLength = _kMenu.Count();//checking how many items are being added to list, only adding one thing with 5 properties
+            _kMenu.Add(meal);//is of type KCafeMenu which is storing to list which can only hold kcafemenu items
+            bool wasAddedToMenu = kMenuLength + 1 == _kMenu.Count();
+            return wasAddedToMenu;
+        }
+        //public List<KCafeMenu> ReturnCafe()
+        //{
+        //    return _kMenu;
+        //}
     }
 }

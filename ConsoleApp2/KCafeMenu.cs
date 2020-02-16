@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _01_KCafeConsoleApp
-{//
-    public class KCafeClasses
+{//streaming content, two constructors, one with content, other with. ref streaming content, empty class w/ constructors, setting properties
+    public class KCafeMenu//setting up objects, cntrl rr replace all 
     {
         public int MenuID { get; set; }
         public string MealName { get; set; }
         public string MenuDescription { get; set; }
         public string ListIngredients { get; set; }//list, enum, dictionary, collection
         public double MenuPrice { get; set; }
-        public KCafeClasses()
+        public KCafeMenu()
         {
         }
-        public KCafeClasses(int MenuID, string MealName, string MenuDescription, string ListIngredients, double MenuPrice)
+        public KCafeMenu(int menuID, string mealName, string menuDescription, string listIngredients, double menuPrice)
         {
             MenuID = menuID;
             MealName = mealName;
@@ -24,18 +24,5 @@ namespace _01_KCafeConsoleApp
             ListIngredients = listIngredients;
             MenuPrice = menuPrice;
         }
-    }
-    //public class KCafeClassesTwo
-    //{
-    //    public int One { get; set; }
-    //    public int Two { get; set; }
-    //    public KCafeClassesTwo()
-    //    {
-    //    }
-    //    public KCafeClasses(int One, string Two)
-    //    {
-    //        One = one;
-    //        Two = two;
-    //    }
     }
 }
