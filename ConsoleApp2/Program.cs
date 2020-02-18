@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _01_KCafeConsoleApp
-{//
+{
     public class Program
     {
         static void Main(string[] args)

@@ -3,14 +3,14 @@ using _01_KCafeConsoleApp;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace _01_KCafeConsoleApp_Tests
-{//
+{
     [TestClass]
     public class KCafeAppChallengeOne
     {
         [TestMethod]
         public void AddItemToMenu_CheckCorrectBoolean()
-        {//arrange, act, assert
-            ProgramRepo repoContent = new ProgramRepo();//in streaming content tests, repo
+        {//arrange
+            ProgramRepo repoContent = new ProgramRepo();
             //creating content
             KCafeMenu mealTests = new KCafeMenu(1, "Name", "Description", "ListIngredients", 5);
             //creating meal, adding KCafeMenu params

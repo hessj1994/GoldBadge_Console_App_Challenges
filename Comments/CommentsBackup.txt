@@ -1,0 +1,155 @@
+PROGRAM REPO
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+//A method to Add an object to a dictionary, A method to Delete an object from a queue, a method to check if the user typed yes or no
+
+namespace _01_KCafeConsoleApp
+{//
+    public class ProgramRepo
+    {
+        List<KCafeMenu> _kMenu = new List<KCafeMenu>();//<of> KCafeMenu
+
+        public void BuildMenu()
+        {
+            _kMenu.Add(new KCafeMenu(1, "mealName1", "menuDescription1", "listIngredients1", 2.99));
+            _kMenu.Add(new KCafeMenu(2, "mealName2", "menuDescription2", "listIngredients2", 2.99));
+            _kMenu.Add(new KCafeMenu(3, "mealName3", "menuDescription3", "listIngredients3", 2.99));
+            _kMenu.Add(new KCafeMenu(4, "mealName4", "menuDescription4", "listIngredients4", 2.99));
+            _kMenu.Add(new KCafeMenu(5, "mealName5", "menuDescription5", "listIngredients5", 2.99));
+        }
+
+        public List<KCafeMenu> ReturnBuildMenu()
+        {
+            return _kMenu;
+        }
+
+        //public string BuildMenuOptionsExitCondition(string Exit, string View_Menu)
+        //{
+        //    string choiceExit = "Exit the menu";
+            
+        //}
+
+        public bool CheckAddItemToMenu(KCafeMenu meal)//object kcafe menu called meal, adding it to list through buildmenuid, meal is type kcafemenu
+        //void to bool -> need return; -> asserting in unit testing
+        {
+            int kMenuLength = _kMenu.Count();//checking how many items are being added to list, only adding one thing with 5 properties
+            _kMenu.Add(meal);//is of type KCafeMenu which is storing to list which can only hold kcafemenu items
+            bool wasAddedToMenu = kMenuLength + 1 == _kMenu.Count();
+            return wasAddedToMenu;
+        }
+        //public List<KCafeMenu> ReturnCafe()
+        //{
+        //    return _kMenu;
+        //}
+    }
+}
+______________________________________________________________________________________________________________________
+KCAFEMENU
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01_KCafeConsoleApp
+{//streaming content, two constructors, one with content, other with. ref streaming content, empty class w/ constructors, setting properties
+    public class KCafeMenu//setting up objects, cntrl rr replace all 
+    {
+        public int MenuID { get; set; }
+        public string MealName { get; set; }
+        public string MenuDescription { get; set; }
+        public string ListIngredients { get; set; }//list, enum, dictionary, collection
+        public double MenuPrice { get; set; }
+        public KCafeMenu()
+        {
+        }
+        public KCafeMenu(int menuID, string mealName, string menuDescription, string listIngredients, double menuPrice)
+        {
+            MenuID = menuID;
+            MealName = mealName;
+            MenuDescription = menuDescription;
+            ListIngredients = listIngredients;
+            MenuPrice = menuPrice;
+        }
+    }
+}
+_____________________________________________________________________________________________--
+PROGRAM.CS
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01_KCafeConsoleApp
+{//
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            ProgramUI programUI = new ProgramUI();
+            programUI.Run();
+        }
+    }
+}
+______________________________________________________________________________________________
+PROGRAMUI.CS
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01_KCafeConsoleApp
+{//
+    class ProgramUI
+    {
+        private readonly ProgramRepo _programRepo = new ProgramRepo();
+        public void Run()//void -> object
+        {
+            _kMenu.CheckAddItemToMenu();
+            _kMenu.BuildMenu();
+            //_programRepo.BuildMenuID(); buildmenuid changed to AddItemToMenu
+            StartProgram();
+        }
+        private void StartProgram()
+        {
+            Console.ReadLine();
+        }
+    }
+}
+_________________________________________________________________________________________
+PROGRAMUI_TESTS
+using System;
+using _01_KCafeConsoleApp;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace _01_KCafeConsoleApp_Tests
+{//
+    [TestClass]
+    public class KCafeAppChallengeOne
+    {
+        [TestMethod]
+        public void AddItemToMenu_CheckCorrectBoolean()
+        {//arrange, act, assert
+            ProgramRepo repoContent = new ProgramRepo();//in streaming content tests, repo
+            //creating content
+            KCafeMenu mealTests = new KCafeMenu(1, "Name", "Description", "ListIngredients", 5);
+            //creating meal, adding KCafeMenu params
+            //type(class) meal is an object of ttype kcafemenu
+            // ^^ Arranged ^^
+            repoContent.CheckAddItemToMenu(mealTests);//can make additemtomenu method a bool to assert if true
+            //checking if new var repoContent from ProgramRepo is adding meal to list KCakfeMenu
+
+            bool checkResult = repoContent.CheckAddItemToMenu(mealTests);
+            //^^ Act ^^
+
+            Assert.IsTrue(checkResult);
+
+        }
+    }
+}
