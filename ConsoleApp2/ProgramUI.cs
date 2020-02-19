@@ -11,7 +11,7 @@ namespace _01_KCafeConsoleApp
         private readonly ProgramRepo _programRepo = new ProgramRepo();
         public void Run()
         {
-            //_kMenu.AddItemToMenu();
+           _programRepo.AddItemToMenu();
             //_programRepo.BuildMenuID(); buildmenuid changed to AddItemToMenu
             StartProgram();
         }
